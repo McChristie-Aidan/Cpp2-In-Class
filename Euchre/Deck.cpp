@@ -49,7 +49,7 @@ void Deck::createDeck()
 		string f = faces[x % 6];
 		string s = suits[New_Suit];
 		int p = CardValue[x % 6];
-		Card* c = new Card(f,s,p);
+		Card::Card c = new Card(f,s,p);
 		this->m_cards->push_back(c);
 		
 		//just for making sure the deck gets made
