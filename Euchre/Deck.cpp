@@ -1,4 +1,4 @@
-v#include "Deck.h"
+#include "Deck.h"
 
 #include <algorithm>
 #include <chrono>
@@ -39,28 +39,26 @@ void Deck::createDeck()
 {
 	//this deck instantiation code was adopted from a forum online.
 	//feels better than having to type out each card.
-	int New_Suit = 0;
+
+	int newSuit = 0;
 	string faces[6] = { "Ace", "Nine", "Ten", "Jack", "Queen", "King" };
 	string suits[4] = { "Diamonds", "Clubs", "Hearts", "Spades" };
 	int CardValue[6] = { 1, 1, 1, 1, 1, 1 };
 
-	for (int x = 0; x < 52; x++)
+	for (int x = 0; x < 24; x++)
 	{
 		string f = faces[x % 6];
-		string s = suits[New_Suit];
+		string s = suits[newSuit];
 		int p = CardValue[x % 6];
-		Card::Card c = new Card(f,s,p);
+		Card* c = new Card(f,s,p);
 		this->m_cards->push_back(c);
 		
 		//just for making sure the deck gets made
-		/*for (int x = 0; x < 6; x++)
-		{
-			cout << c->Face << " of " << c->Suit << " : Value of " << c->cardValue << endl;
-		}*/
+		cout << c->Face << " of " << c->Suit << " : Value of " << c->cardValue << endl;
 
 		if ((x + 1) % 6 == 0) 
 		{
-			New_Suit++;
+			newSuit++;
 		}
 	}
 }

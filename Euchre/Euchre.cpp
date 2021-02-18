@@ -81,6 +81,7 @@ void Euchre::printHand(Player* player)
 		Card* c = (*p->hand)[i];
 		cout << c->Face << " of " << c->Suit << " : Value of " << c->cardValue << endl;
 	}
+	cout << endl;
 }
 
 //takes input to set player name
