@@ -43,10 +43,10 @@ Euchre::Euchre()
     drawCard(player3, cardPile, 5);
     drawCard(player4, cardPile, 5);
 
-    printHand(player1)
-    printHand(player2)
-    printHand(player3)
-    printHand(player4)
+    printHand(player1);
+    printHand(player2);
+    printHand(player3);
+    printHand(player4);
 
 }
 
