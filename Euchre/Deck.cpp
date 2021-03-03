@@ -41,9 +41,9 @@ void Deck::createDeck()
 	//feels better than having to type out each card.
 
 	int newSuit = 0;
-	string faces[6] = { "Ace", "Nine", "Ten", "Jack", "Queen", "King" };
+	string faces[6] = { "Nine", "Ten", "Jack", "Queen", "King", "Ace"};
 	string suits[4] = { "Diamonds", "Clubs", "Hearts", "Spades" };
-	int CardValue[6] = { 1, 1, 1, 1, 1, 1 };
+	int CardValue[6] = { 1, 2, 3, 4, 5, 6 };
 
 	for (int x = 0; x < 24; x++)
 	{
@@ -54,7 +54,7 @@ void Deck::createDeck()
 		this->m_cards->push_back(c);
 		
 		//just for making sure the deck gets made
-		cout << c->Face << " of " << c->Suit << " : Value of " << c->cardValue << endl;
+		//cout << c->Face << " of " << c->Suit << " : Value of " << c->cardValue << endl;
 
 		if ((x + 1) % 6 == 0) 
 		{
