@@ -130,31 +130,38 @@ void Euchre::playEuchre()
     vector<Card*>* player3Hand = new vector<Card*>();
     vector<Card*>* player4Hand = new vector<Card*>();
 
-	cout << "hands initialized" << endl << endl;
+	//debug
+	//cout << "hands initialized" << endl << endl;
 
     player1 = new Player(getPlayerName(), player1Hand);
-    player2 = new Player(getPlayerName(), player2Hand);
-    player3 = new Player(getPlayerName(), player3Hand);
-    player4 = new Player(getPlayerName(), player4Hand);
+    player2 = new Player("player 2", player2Hand);
+    player3 = new Player("player 3", player3Hand);
+    player4 = new Player("player 4", player4Hand);
 
-	cout << "players named and created" << endl << endl;
+	//debug
+	//cout << "players named and created" << endl << endl;
 
 	Deck* deck = new Deck();
     vector<Card*>* cardPile = deck->get_cards();
 
-	cout << "deck recieved" << endl << endl;
+	//debug
+	//cout << "deck recieved" << endl << endl;
 
     drawCard(player1, cardPile, 5);
     drawCard(player2, cardPile, 5);
     drawCard(player3, cardPile, 5);
     drawCard(player4, cardPile, 5);
 
-	cout << "hands delt" << endl << endl;
+	//debug
+	//cout << "hands delt" << endl << endl;
 
     printHand(player1);
     printHand(player2);
     printHand(player3);
     printHand(player4);
+
+	cout << "The top card of the deck is: " << endl;
+	printCard(cardPile, 1);
 }
 
 Euchre::Euchre()
