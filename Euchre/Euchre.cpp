@@ -123,9 +123,21 @@ string Euchre::getPlayerName()
 	return name;
 }
 
+//game logic for Euchre
 void Euchre::playEuchre()
 {
-    vector<Card*>* player1Hand = new vector<Card*>();
+
+    while (!player1->hand->empty())
+	{
+		/* code */
+	}
+	
+}
+
+//sets everything up so we can run the game
+void Euchre::initilizeEuchre()
+{
+	vector<Card*>* player1Hand = new vector<Card*>();
     vector<Card*>* player2Hand = new vector<Card*>();
     vector<Card*>* player3Hand = new vector<Card*>();
     vector<Card*>* player4Hand = new vector<Card*>();
@@ -162,9 +174,11 @@ void Euchre::playEuchre()
 
 	cout << "The top card of the deck is: " << endl;
 	printCard(cardPile, 1);
+
 }
 
 Euchre::Euchre()
 {
+	Euchre::initilizeEuchre();
 	Euchre::playEuchre();
 }
