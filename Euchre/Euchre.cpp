@@ -18,6 +18,7 @@ Player* player2;
 Player* player3;
 Player* player4;
 Player* currentDealer;
+Player* currentPlayer;
 vector<Card*>* cardPile;
 
 //takes a card from a deck and puts it into a players hand
@@ -126,7 +127,10 @@ string Euchre::getPlayerName()
 //game logic for Euchre
 void Euchre::playEuchre()
 {
-
+	currentPlayer = currentDealer->playerToLeft;
+	
+	int input;
+	cin >> input;
 }
 
 //sets everything up so we can run the game
@@ -151,7 +155,7 @@ void Euchre::initilizeEuchre()
 	player2->playerToLeft = player3;
 	player3->playerToLeft = player4;
 	player4->playerToLeft = player1;
-	
+
 	//debug
 	//cout << "players named and created" << endl << endl;
 
