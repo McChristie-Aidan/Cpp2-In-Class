@@ -17,6 +17,7 @@ Player* player1;
 Player* player2;
 Player* player3;
 Player* player4;
+Player* currentDealer;
 vector<Card*>* cardPile;
 
 //takes a card from a deck and puts it into a players hand
@@ -71,7 +72,6 @@ float Euchre::findHandPower(Player* player)
 	{
 		Card* c = (*hand)[i];
 		//this is a really janky way to do this.
-		//this switch will increase the hands power in each suit depending on each card.
 		//I add the card value * .01 so that way the algorithm takes in account not only the suit but the value of the card
 		//I have to multiply by .01 so that the agorithm cares more about the suit than the value. It's more of a tie breaker
 		//it doesnt account for the jacks yet but I could tack that on their pretty easily
@@ -127,11 +127,6 @@ string Euchre::getPlayerName()
 void Euchre::playEuchre()
 {
 
-    while (!player1->hand->empty())
-	{
-		/* code */
-	}
-	
 }
 
 //sets everything up so we can run the game
@@ -150,6 +145,13 @@ void Euchre::initilizeEuchre()
     player3 = new Player("player 3", player3Hand);
     player4 = new Player("player 4", player4Hand);
 
+	currentDealer = player1;
+
+	player1->playerToLeft = player2;
+	player2->playerToLeft = player3;
+	player3->playerToLeft = player4;
+	player4->playerToLeft = player1;
+	
 	//debug
 	//cout << "players named and created" << endl << endl;
 

@@ -1,9 +1,9 @@
 #include "Player.h"
 
-Player::Player(std::string name, std::vector<Card*>* hand)
+Player::Player(std::string _name, std::vector<Card*>*)
 {
-    this->name = name;
-    this->hand = hand;
+    this->name = _name;
+    this->hand = _hand;
     handTotal = 0;
 }
 
