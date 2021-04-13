@@ -127,10 +127,16 @@ string Euchre::getPlayerName()
 //game logic for Euchre
 void Euchre::playEuchre()
 {
+
+	vector<Card*>* playPile = new vector<Card*>;
+
 	currentPlayer = currentDealer->playerToLeft;
 	
-	int input;
-	cin >> input;
+	while (currentPlayer->hand->size > 0;)
+	{
+		playerPlayCard(currentPlayer);
+		currentPlayer = currentPlayer->playerToLeft;
+	}
 }
 
 //sets everything up so we can run the game
@@ -181,6 +187,12 @@ void Euchre::initilizeEuchre()
 	cout << "The top card of the deck is: " << endl;
 	printCard(cardPile, 1);
 
+}
+
+void playerPlayCard(Player* player)
+{
+	int input;
+	cin >> input;
 }
 
 Euchre::Euchre()
