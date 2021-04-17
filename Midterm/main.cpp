@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <fstream>
+#include <sstream>
 #include <ios>
 #include <string>
 
@@ -14,8 +15,12 @@ void ReadCSV()
     std::cout << "enter the line number you want to display : ";
     std::cin >> rollnum;
 
+    std::cout << "taken in imput" << std::endl;
+
     std::vector<std::string> row;
     std::string line, word, temp;
+
+    std::cout << "initialized vector and strings" << std::endl;
 
     while (fileIn >> temp)
     {
@@ -25,12 +30,17 @@ void ReadCSV()
 
         std::stringstream s(line);
 
+        std::cout << "initialized string stream" << std::endl;
+
         while (getline(s, word, ','))
         {
             row.push_back(word);
+            std::cout << "Pushed back word" << std::endl;
         }
         
         roll2 = std::stoi(row[0]);
+
+        std::cout << "completed stoi on row 0" << std::endl;
 
         if (roll2 == rollnum)
         {
@@ -52,6 +62,6 @@ void ReadCSV()
 
 int main()
 {
-
+    ReadCSV();
     return 0;
 }
