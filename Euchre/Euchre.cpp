@@ -20,6 +20,7 @@ Player* player4;
 Player* currentDealer;
 Player* currentPlayer;
 vector<Card*>* cardPile;
+vector<Card*>* playPile;
 
 //takes a card from a deck and puts it into a players hand
 void Euchre::drawCard(Player* playerWhoDraws, vector<Card*>* deckToDrawFrom, int timesToDraw)
@@ -132,7 +133,7 @@ void Euchre::playEuchre()
 
 	currentPlayer = currentDealer->playerToLeft;
 	
-	while (currentPlayer->hand->size > 0;)
+	while (currentPlayer->hand->size() > 0)
 	{
 		playerPlayCard(currentPlayer);
 		currentPlayer = currentPlayer->playerToLeft;
@@ -193,6 +194,12 @@ void playerPlayCard(Player* player)
 {
 	int input;
 	cin >> input;
+
+	if (0 < input < player->hand->size())
+	{
+		Card* c = player->hand[input];
+		playPile->push_back(player->hand[input]);
+	}
 }
 
 Euchre::Euchre()
