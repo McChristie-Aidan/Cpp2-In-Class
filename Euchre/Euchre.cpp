@@ -195,11 +195,23 @@ void playerPlayCard(Player* player)
 	int input;
 	cin >> input;
 
+	int array[] {1,2,3,4,5};
+
+
 	if (0 < input < player->hand->size())
 	{
-		Card* c = player->hand[input];
-		playPile->push_back(player->hand[input]);
+		Card* c = player->hand[input].at(input);
+		playPile->push_back(player->hand[input].at(input));
 	}
+}
+
+Player* CheckWinner()
+{
+	for (size_t i = 0; i < playPile->size(); i++)
+	{
+		//todo win logic
+	}
+	
 }
 
 Euchre::Euchre()
