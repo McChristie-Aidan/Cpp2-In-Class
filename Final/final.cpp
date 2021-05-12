@@ -1,64 +1,47 @@
 #include <iostream>
+#include <iomanip>
 #include <fstream>
 #include <vector>
 #include <sstream>
+#include <map>
+#include "FileData.h"
 
 std::string targetFile = "Food_Inspections.csv";
 int columNumber = 4;
 
-struct FileData
+FileData myData;
+
+void CompileColumnToMap(std::vector<std::string> column) 
 {
-    std::vector<std::vector<std::string>> rows;   
+    std::map<std::string, int> map;
 
-    void printRow(int rowNumber)
+    std::cout << "map created" << std::endl; 
+
+    for (size_t i = 0; i < column.size(); i++)
     {
-        //lets me know what the input is
-        std::cout << "printing line : " << rowNumber << std::endl;
-
-        int correctedRowNum = rowNumber;
-
-        if (correctedRowNum <= 0)
+        
+        if (map.count(column[i]))
         {
-            correctedRowNum = 0;
+            map[column[i]] += 1;
         }
         else
         {
-            correctedRowNum -= 1;
-        }       
-
-        std::cout << "corrected number" << std::endl;
-
-        for (size_t i = 0; i < rows[correctedRowNum].size(); i++)
-        {
-            std::cout << rows[correctedRowNum][i] << std::endl;
-        }       
-    }
-
-    void printColumn(int columnNum)
-    {
-        //lets me know what the input is
-        //std::cout << "printing line : " << rowNumber << std::endl;
-
-        int correctedColumnNum = columnNum;
-
-        if (correctedColumnNum <= 0)
-        {
-            correctedColumnNum = 0;
+            map[column[i]] = 1;
         }
-        else
-        {
-            correctedColumnNum -= 1;
-        }       
-
-        for (size_t i = 0; i < rows.size(); i++)
-        {
-            std::cout << rows[i][correctedColumnNum] << std::endl;
-        }       
+        
     }
-};
 
+    std::cout << "reading map" << std::endl;
 
-FileData readCSVToObject(std::string fileName)
+    for (auto item : map)
+    {
+        std::cout << item.first << " appears ";
+
+        std::cout << item.second << " times" << std::endl;
+    }
+}
+
+FileData ReadCSVToObject(std::string fileName)
 {   
     std::ifstream myFile;
     FileData fileData;
@@ -79,19 +62,40 @@ FileData readCSVToObject(std::string fileName)
 
         std::stringstream ss(line);
 
-        std::vector<std::string> currentRow;
+        std::vector<std::string> currentRow;      
+        
 
+        // while (ss >> std::ws)
+        // {
+        //     std::string columnValue;
+
+        //     if (ss.peek() == '"')
+        //     {
+        //         ss >> std::quoted(columnValue);
+        //         std::string discard;
+        //         std::getline(ss, discard, ',');
+        //     }
+        //     else
+        //     {
+        //         std::getline(ss, columnValue, ',');
+        //     }
+            
+        //     currentRow.push_back(columnValue);
+        // }
+        
+        //fix this to parse the quotes as well
         while (ss.good())
         {      
             std::string columnValue;
 
             getline(ss, columnValue, ',');
-
+            
             //print this to vector instead of console
             //std::cout << columnValue << std::endl;
 
             currentRow.push_back(columnValue);
         }
+
         fileData.rows.push_back(currentRow);
     }  
 
@@ -108,11 +112,13 @@ FileData readCSVToObject(std::string fileName)
 
 int main()
 {
-    FileData myData = readCSVToObject(targetFile);
+    myData = ReadCSVToObject(targetFile);
 
-    std::cout << "data read" << std::endl;
+    //myData.printRow(219522);
+    
+    std::cout << "csv reading complete" << std::endl;
 
-    myData.printRow(0);
-    //myData.printColumn(6);
+    CompileColumnToMap(myData.GetColumn(6));
+
     return 0;
 }
