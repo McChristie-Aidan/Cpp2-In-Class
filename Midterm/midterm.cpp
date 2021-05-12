@@ -15,9 +15,9 @@ struct FileData
         //lets me know what the input is
         //std::cout << "printing line : " << rowNumber << std::endl;
 
-        int correctedRowNum;
+        int correctedRowNum = rowNumber;
 
-        if (rowNumber <= 0)
+        if (correctedRowNum <= 0)
         {
             correctedRowNum = 0;
         }
@@ -80,6 +80,6 @@ FileData readCSVToObject(std::string fileName)
 int main()
 {
     FileData myData = readCSVToObject(targetFile);
-    myData.printRow(-5);
+    myData.printRow(5);
     return 0;
 }
