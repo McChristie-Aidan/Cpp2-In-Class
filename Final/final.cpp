@@ -87,6 +87,7 @@ FileData ReadCSVToObject(std::string fileName)
         // }
         
         //fix this to parse the quotes as well
+        //fixing this would probably make everything work right.
         while (ss.good())
         {      
             std::string columnValue;

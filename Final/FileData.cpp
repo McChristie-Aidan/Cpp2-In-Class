@@ -46,8 +46,9 @@ std::vector<std::string> FileData::GetColumn(int columnNum)
 
 
     //seg fault here i need to fix
+    //no clue why subtracting the row size by 1 makes it not seg fault.
     //for (size_t i = 0; i < rows.size(); i++)
-    for (size_t i = 0; i < 219747; i++)
+    for (size_t i = 0; i < rows.size() - 1; i++)
     {
         std::cout << "printing row " << i << " : " << rows[i][correctedColumnNum] << std::endl;
         temp.push_back(rows[i][correctedColumnNum]);
