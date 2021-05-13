@@ -57,8 +57,10 @@ FileData ReadCSVToObject(std::string fileName)
         std::string line;
         getline(myFile, line);
                 
+        //int count;
+
         //print this to vector instead of console
-        //std::cout << line << std::endl;
+        //std::cout << "line number : " << ++count << std::endl;
 
         std::stringstream ss(line);
 
@@ -70,7 +72,8 @@ FileData ReadCSVToObject(std::string fileName)
         //     std::string columnValue;
 
         //     if (ss.peek() == '"')
-        //     {
+        //     {0
+        //         //no c++14 :(
         //         ss >> std::quoted(columnValue);
         //         std::string discard;
         //         std::getline(ss, discard, ',');
@@ -88,7 +91,7 @@ FileData ReadCSVToObject(std::string fileName)
         {      
             std::string columnValue;
 
-            getline(ss, columnValue, ',');
+            getline(ss >> std::ws, columnValue, ',');
             
             //print this to vector instead of console
             //std::cout << columnValue << std::endl;
@@ -114,10 +117,10 @@ int main()
 {
     myData = ReadCSVToObject(targetFile);
 
-    //myData.printRow(219522);
-    
+    //myData.printRow(219747);
+   
     std::cout << "csv reading complete" << std::endl;
-
+    
     CompileColumnToMap(myData.GetColumn(6));
 
     return 0;
